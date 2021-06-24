@@ -1,0 +1,11 @@
+main {
+  min-height: 80vh;
+}
+
+.list {
+  margin-left: auto;
+}
+
+.frm {
+  border: 2px solid;
+}
