@@ -132,12 +132,35 @@ const getUserById = asyncHandler(async (req, res) => {
 })
 
 const updateUser = asyncHandler(async (req, res) => {
+    const {
+        name,
+        email,
+        mobile,
+        dob,
+        gender,
+        image,
+        qualifications,
+        skills,
+        address,
+        city,
+        state,
+        country } = req.body
+
     const user = await User.findById(req.params.id)
 
     if (user) {
-        user.name = req.body.name || user.name
-        user.email = req.body.email || user.email
-
+        user.name = name,
+            user.email = email,
+            user.mobile = mobile,
+            user.dob = dob,
+            user.gender = gender,
+            user.image = image,
+            user.qualifications = qualifications,
+            user.skills = skills,
+            user.address = address,
+            user.city = city,
+            user.state = state,
+            user.country = country
 
         const updatedUser = await user.save()
 
