@@ -28,6 +28,10 @@ const RegisterScreen = ({ history, location }) => {
   const [state, setState] = useState('')
   const [country, setCountry] = useState('india')
 
+  const cityValue = ['lucknow', 'kanpur', 'sitapur', 'malihabad', 'kakory', 'gorakhpur']
+  const stateValue = ['uttar pradesh', 'madhya pradesh', 'arunachal pradesh', 'himachal pradesh']
+
+
   const redirect = location.search ? location.search.split('=')[1] : '/'
 
   const dispatch = useDispatch()
@@ -247,28 +251,36 @@ const RegisterScreen = ({ history, location }) => {
                     ></Form.Control>
                   </Form.Group>
                   <Row>
+
                     <Col>
-                      <Form.Group controlId='city'>
+                      <Form.Group controlId='state'>
                         <Form.Label>City</Form.Label>
-                        <Form.Control
-                          type='text'
-                          placeholder='Enter City'
-                          value={city}
-                          onChange={(e) => setCity(e.target.value)}
-                        ></Form.Control>
-                      </Form.Group></Col>
+                        <br />
+                        <select onChange={(e) => setCity(e.target.value)} >
+                          <option value=''>Select...</option>
+
+                          {cityValue.map((e) =>
+                            <option value={e}>{e}</option>
+                          )}
+
+                        </select>
+                      </Form.Group>
+                    </Col>
 
                     <Col>
-
                       <Form.Group controlId='state'>
                         <Form.Label>State</Form.Label>
-                        <Form.Control
-                          type='text'
-                          placeholder='Enter State'
-                          value={state}
-                          onChange={(e) => setState(e.target.value)}
-                        ></Form.Control>
-                      </Form.Group></Col>
+                        <br />
+                        <select onChange={(e) => setState(e.target.value)} >
+                          <option value=''>Select...</option>
+
+                          {stateValue.map((e) =>
+                            <option value={e}>{e}</option>
+                          )}
+
+                        </select>
+                      </Form.Group>
+                    </Col>
 
                     <Col>
 
@@ -282,6 +294,14 @@ const RegisterScreen = ({ history, location }) => {
                         ></Form.Control>
                       </Form.Group></Col>
                   </Row>
+
+
+                  <Button
+                    type="submit"
+                    variant='secondary'
+                    className='mt-3 mb-2'
+                    onClick={() => setStep(1)}
+                  >Preview</Button>
 
                   <Button
                     type="submit"
